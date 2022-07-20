@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This example shows how to display content in columns.
 The data is pulled from https://randomuser.me
@@ -47,6 +48,6 @@ if __name__ == '__main__':
     services = get_services()
     console = Console()
     #users = json.loads(urlopen("https://randomuser.me/api/?results=30").read())["results"]
-    console.print(services, overflow="ignore", crop=False)
+    #console.print(services, overflow="ignore", crop=False)
     service_renderables = [Panel(get_content(service), expand=True) for service in services]
     console.print(Columns(service_renderables))
