@@ -13,20 +13,27 @@ from rich.panel import Panel
 import subprocess
 import os
 
+import socket   
+hostname=socket.gethostname()   
+IPAddr=socket.gethostbyname(hostname) 
+
 def get_service_stub(name='',servicename='',url='',credentials=''):
     return {'Name':name,'Status':'Unknown','color':'magenta','servicename':servicename,'url':url,'credentials':credentials}
 def get_services():
     services = []
-    services.append(checkService(get_service_stub('smtp4dev','fakeSMTP')))
+    services.append(checkService(get_service_stub('smtp4dev','fakeSMTP',f'http://{IPAddr}:5000/', 'ohne Anmeldung')))
     services.append(checkService(get_service_stub('DB2','db2')))
-    services.append(checkService(get_service_stub('LogViewer','logviewer')))
+    services.append(checkService(get_service_stub('LogViewer','logviewer',f'http://{IPAddr}:8111/','ohne Anmeldung')))
     return services
 
 def get_content(service):
     """Extract text from user dict."""
     status = service["Status"]
+    url = service["url"]
+    creds = service["credentials"]
     name = f"{service['Name']}"
-    return f"[b]{name}[/b]\n[{service['color']}]{status}"
+
+    return f"[b]{name}[/b]\n[{service['color']}]{status}[/{service['color']}]\n{url}\n{creds}"
 
 def checkService(service):
     if is_service_running(service['servicename']):
