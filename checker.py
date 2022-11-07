@@ -24,9 +24,12 @@ def get_service_stub(name='',servicename='',url='',credentials=''):
     return {'Name':name,'Status':'Unknown','color':'magenta','servicename':servicename,'url':url,'credentials':credentials}
 def get_services():
     services = []
-    services.append(checkService(get_service_stub('smtp4dev','fakeSMTP',f'http://{IPAddr}:5000/', 'ohne Anmeldung')))
+    services.append(checkService(get_service_stub('smtp4dev (E-Mails)','fakeSMTP',f'http://{IPAddr}:5000/', 'ohne Anmeldung')))
     services.append(checkService(get_service_stub('DB2','db2')))
     services.append(checkService(get_service_stub('LogViewer','logviewer',f'http://{IPAddr}:8111/','ohne Anmeldung')))
+    services.append(checkService(get_service_stub('Cloudbeaver (SQL)','cloudbeaver',f'http://{IPAddr}:8978/','User cbadmin Pw cbadmin')))
+    services.append(checkService(get_service_stub('WebSphere DMgr','websphere-dmgr',f'https://{IPAddr}:9043/ibm/console/','User wasadmin Pw wasadmin')))
+    services.append(checkService(get_service_stub('IBM Control Desk / Maximo','websphere-node',f'https://{IPAddr}/','Standardbenutzer')))
     return services
 
 def get_content(service):
