@@ -30,6 +30,7 @@ def get_services():
     services.append(checkService(get_service_stub('Cloudbeaver (SQL)','cloudbeaver',f'http://{IPAddr}:8978/','User cbadmin Pw cbadmin')))
     services.append(checkService(get_service_stub('WebSphere DMgr','websphere-dmgr',f'https://{IPAddr}:9043/ibm/console/','User wasadmin Pw wasadmin')))
     services.append(checkService(get_service_stub('IBM Control Desk / Maximo','websphere-node',f'https://{IPAddr}/','Standardbenutzer')))
+    services.append(checkService(get_service_stub('Service Portal','ibm-svcportal',f'https://{IPAddr}:3000/','Standardbenutzer')))
     return services
 
 def get_content(service):
