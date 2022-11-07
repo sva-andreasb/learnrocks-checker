@@ -13,9 +13,12 @@ from rich.panel import Panel
 import subprocess
 import os
 
-import socket   
-hostname=socket.gethostname()   
-IPAddr=socket.gethostbyname(hostname) 
+import socket
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+IPAddr=get_ip_address()
 
 def get_service_stub(name='',servicename='',url='',credentials=''):
     return {'Name':name,'Status':'Unknown','color':'magenta','servicename':servicename,'url':url,'credentials':credentials}
