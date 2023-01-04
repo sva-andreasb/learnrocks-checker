@@ -59,8 +59,8 @@ def is_service_running(name):
         return exit_code == 0
 
 if __name__ == '__main__':
-    os.system('alias log="cd /opt/IBM/WebSphere/AppServer/profiles/ctgAppSrv01/logs/MXServer/')
-    os.system('alias tlog="tail -f /opt/IBM/WebSphere/AppServer/profiles/ctgAppSrv01/logs/MXServer/SystemOut.log')
+    os.system('alias log="cd /opt/IBM/WebSphere/AppServer/profiles/ctgAppSrv01/logs/MXServer/"')
+    os.system('alias tlog="tail -f /opt/IBM/WebSphere/AppServer/profiles/ctgAppSrv01/logs/MXServer/SystemOut.log"')
     services = get_services()
     console = Console()
     #users = json.loads(urlopen("https://randomuser.me/api/?results=30").read())["results"]
